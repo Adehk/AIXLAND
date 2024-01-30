@@ -7,7 +7,7 @@
     <!-- intl-tel-input CSS -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.min.css"
+      href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.19/css/intlTelInput.css"
     />
 
     <!-- Link to Bootstrap CSS -->
@@ -28,7 +28,6 @@
     <title>AIXLAND</title>
   </head>
   <body>
-    
     <header class="header">
       <div class="header__content">
         <a href="index.html" class="header__logo">
@@ -69,7 +68,11 @@
     </svg>
 
     <section class="hero">
-      
+      <video autoplay muted loop class="hero__video">
+        <source src="images/video.MP4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <img src="images/logo2.svg" class="hero__logo" alt="" />
     </section>
 
     <section class="infinite-marquee">
@@ -516,6 +519,44 @@
       </clipPath>
     </svg>
 
+    <div class="loader-overlay" id="loader-overlay">
+      <div class="loader"></div>
+    </div>
+
+    <svg class="svg">
+      <clipPath id="popup-bg" clipPathUnits="objectBoundingBox">
+        <path
+          d="M-0.001,0 H0.23 L0.253,0.045 H0.745 L0.767,0 H0.999 V1 H0.767 L0.744,0.955 H0.247 L0.224,1 H-0.001 V0"
+        ></path>
+      </clipPath>
+    </svg>
+
+    <div class="success-popup">
+      <div class="success-popup__content">
+        <div>
+          <h2 class="success-popup__title">Thank you!</h2>
+          <p class="success-popup__paragraph">
+            Your details have been successfully submitted. We'll get back to you
+            shortly.
+          </p>
+        </div>
+        <span class="success-popup__close-button">Close</span>
+      </div>
+    </div>
+
+    <div class="error-popup">
+      <div class="error-popup__content">
+        <div>
+          <h2 class="error-popup__title">Whoops!</h2>
+          <p class="error-popup__paragraph">
+            Something went wrong. <br />
+            Please try again later.
+          </p>
+        </div>
+        <span class="error-popup__close-button">Close</span>
+      </div>
+    </div>
+
     <section class="ask">
       <div class="ask__content">
         <div class="ask__text-col">
@@ -604,8 +645,7 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Officiis, tempore?
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur, enim debitis iure omnis inventore dolores.
               </div>
             </div>
           </div>
@@ -629,8 +669,7 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Deleniti animi error voluptas alias libero natus.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ducimus sequi repellat totam delectus aliquam beatae reiciendis neque minima adipisci?
               </div>
             </div>
           </div>
@@ -681,11 +720,8 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                From the moment of purchase at auction, delivery to Vladivostok
-                takes a month, plus 7-10 days customs, total: 1.5 months from
-                the moment of purchase, and until the car leaves customs.This is
-                a real deadline!
-              </div>
+                
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis quibusdam illum quidem! Exercitationem, delectus amet? Omnis quidem sint unde atque nostrum iste rerum aspernatur saepe?
             </div>
           </div>
           <div class="accordion-item">
@@ -708,10 +744,7 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                From the moment of purchase at auction, delivery to Vladivostok
-                takes a month, plus 7-10 days customs, total: 1.5 months from
-                the moment of purchase, and until the car leaves customs.This is
-                a real deadline!
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit, aspernatur dignissimos? Odio atque, vero vel rem ipsum voluptate enim. Quis aliquid veritatis repellat commodi consequuntur reiciendis nobis excepturi dolores accusantium!
               </div>
             </div>
           </div>
@@ -726,10 +759,7 @@
             <img src="images/logo.svg" alt="Expovision Logo" />
           </a>
           <div class="footer__socials">
-            <a
-              href="https://www.instagram.com/expovisioned?igsh=aWkzNzQxOXB2b2Vh"
-              class="footer__social-link"
-            >
+            <a href="#" class="footer__social-link">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -764,10 +794,7 @@
                 />
               </svg>
             </a>
-            <a
-              href="https://www.linkedin.com/company/expovisionllc/"
-              class="footer__social-link"
-            >
+            <a href="#" class="footer__social-link">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -813,7 +840,7 @@
                 >Kadyrova 216 street,</a
               >
             </li>
-            <li class="footer__nav-link">Grozny, RU</li>
+            <li class="footer__nav-text">Grozny, RU</li>
           </ul>
           <ul class="footer__follow-us-col">
             <h3 class="footer__heading">Follow us</h3>
@@ -886,6 +913,7 @@
 
     <!-- intl-tel-input JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/utils.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

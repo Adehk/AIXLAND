@@ -1,133 +1,165 @@
-//Form validation
-// document.getElementById("form").addEventListener("submit", function (event) {
-//   // Prevent the form from submitting
-//   event.preventDefault();
-
-//   // Validate the form fields
-//   var name = document.getElementById("name").value.trim();
-//   var phone = document.getElementById("phone").value.trim();
-//   var email = document.getElementById("email").value.trim();
-//   var checkbox = document.querySelector(".checkbox input");
-
-//   // Example validation criteria, you can customize these as needed
-//   if (name === "" || phone === "" || email === "" || !checkbox.checked) {
-//     alert("Please fill in all fields and agree to the terms.");
-//   } else {
-//     // If the form is valid, you can submit it or perform other actions
-//     alert("Form submitted successfully!");
-//     // Add code here to submit the form or perform other actions
-//   }
-// });
-
-//Initialize Swiper
-var swiper1 = new Swiper(".mySwiper1", {
-  centeredSlides: true,
-  loop: true,
-  keyboard: {
-    enabled: true,
-  },
-  slidesPerView: 1,
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next-custom",
-    prevEl: ".swiper-button-prev-custom",
-  },
-  breakpoints: {
-    1440: {
-      slidesPerView: 1.5,
-      spaceBetween: 20,
-    },
-  },
-});
-
-var swiper2 = new Swiper(".mySwiper2", {
-  slidesPerView: 2,
-  loop: true,
-  spaceBetween: 32,
-  keyboard: {
-    enabled: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next-custom",
-    prevEl: ".swiper-button-prev-custom",
-  },
-  breakpoints: {
-    560: {
-      slidesPerView: 3,
-      spaceBetween: 32,
-    },
-    768: {
-      slidesPerView: 2.3,
-      spaceBetween: 20,
-    },
-    1000: {
-      slidesPerView: 3.5,
-      spaceBetween: 20,
-    },
-    1440: {
-      slidesPerView: 5,
-      spaceBetween: 20,
-    },
-  },
-});
-
-const phoneInputField = document.querySelector("#phone");
-const phoneInput = window.intlTelInput(phoneInputField, {
-  utilsScript:
-    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-});
-
-let input = document.querySelector("#phone");
-let iti = intlTelInput(input, {
-  initialCountry: "ru",
-  separateDialCode: true,
-  nationalMode: false,
-});
-
-// Listen for the country change event
-input.addEventListener("countrychange", function (e) {
-  let selectedCountryData = iti.getSelectedCountryData();
-  let countryCode = "+" + selectedCountryData.dialCode;
-
-  // Update the display of the country code wherever needed
-  updateCountryCodeDisplay(countryCode);
-});
-
-function updateCountryCodeDisplay(countryCode) {
-  // Update the display of the country code in your UI
-  // For example, you can set the value of a separate element with id "country-code"
-  document.getElementById("country-code").innerText = countryCode;
-}
-
-// Sending form data to email
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  showLoader();
-  let formData = new FormData(form);
-  formData.set(
-    "phone",
-    iti.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL)
+document.addEventListener("DOMContentLoaded", function () {
+  // Selecting DOM elements
+  const form = document.querySelector(".form");
+  const body = document.body;
+  const loaderOverlay = document.getElementById("loader-overlay");
+  const successPopup = document.querySelector(".success-popup");
+  const successCloseButton = document.querySelector(
+    ".success-popup__close-button"
   );
+  const errorPopup = document.querySelector(".error-popup");
+  const errorCloseButton = document.querySelector(".error-popup__close-button");
 
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "sendmail.php", true);
+  //Initialize Swiper
+  var swiper1 = new Swiper(".mySwiper1", {
+    centeredSlides: true,
+    slidesPerView: 1,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: true,
+    },
+    loop: true,
+    keyboard: {
+      enabled: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next-custom",
+      prevEl: ".swiper-button-prev-custom",
+    },
+    breakpoints: {
+      1440: {
+        slidesPerView: 1.5,
+        spaceBetween: 20,
+      },
+    },
+  });
 
-  xhr.onload = function () {
-    hideLoader();
-    if (xhr.status === 200) {
-      // Email sent successfully
-      console.log("Email sent successfully");
-      toggleModal();
-      handleSuccess();
-    } else {
-      // Email sending failed
-      toggleModal();
-      handleError();
-      console.error("Failed to send email. Check the console for details.");
+  var swiper2 = new Swiper(".mySwiper2", {
+    slidesPerView: 2,
+    loop: true,
+    spaceBetween: 32,
+    keyboard: {
+      enabled: true,
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next-custom",
+      prevEl: ".swiper-button-prev-custom",
+    },
+    breakpoints: {
+      560: {
+        slidesPerView: 3,
+        spaceBetween: 32,
+      },
+      768: {
+        slidesPerView: 2.3,
+        spaceBetween: 20,
+      },
+      1000: {
+        slidesPerView: 3.5,
+        spaceBetween: 20,
+      },
+      1440: {
+        slidesPerView: 5,
+        spaceBetween: 20,
+      },
+    },
+  });
+
+  //Initialize Intl-Tel-Input
+
+  const phoneInput = document.getElementById("phone");
+
+  let iti = window.intlTelInput(phoneInput, {
+    separateDialCode: true,
+    initialCountry: "auto",
+    geoIpLookup: function (success, failure) {
+      success("RU");
+    },
+  });
+
+  // Function to show the loader and overlay
+  function showLoader() {
+    loaderOverlay.classList.add("show-loader-overlay");
+    body.classList.add("disable-scroll");
+  }
+
+  // Function to hide the loader and overlay
+  function hideLoader() {
+    loaderOverlay.classList.remove("show-loader-overlay");
+    body.classList.remove("disable-scroll");
+  }
+
+  // Function to show succsess popup
+  function showSuccessPopup() {
+    successPopup.classList.add("show-success-popup");
+    // If success popup is shown
+    if (successPopup.classList.contains("show-success-popup")) {
+      body.classList.add("disable-scroll");
     }
-  };
-  xhr.send(formData);
+  }
+  successCloseButton.addEventListener("click", function () {
+    successPopup.classList.remove("show-success-popup");
+    body.classList.remove("disable-scroll");
+  });
+
+  // Function to show error popup
+  function showErrorPopup() {
+    errorPopup.classList.add("show-error-popup");
+    // If error popup is shown
+    if (errorPopup.classList.contains("show-error-popup")) {
+      body.classList.add("disable-scroll");
+    }
+  }
+  errorCloseButton.addEventListener("click", function () {
+    errorPopup.classList.remove("show-error-popup");
+    body.classList.remove("disable-scroll");
+  });
+
+  // Function to reset the form after submission
+  function resetForm() {
+    form.reset();
+  }
+
+  // Sending form data to email
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Validation of the checkbox
+    const checkbox = document.querySelector('.checkbox input[type="checkbox"]');
+    if (!checkbox.checked) {
+      // If checkbox is not checked
+      alert("Please agree to the terms and conditions");
+      return;
+    }
+
+    showLoader();
+    let formData = new FormData(form);
+    formData.set(
+      "phone",
+      iti.getNumber(intlTelInputUtils.numberFormat.INTERNATIONAL)
+    );
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "sendmail.php", true);
+
+    xhr.onload = function () {
+      hideLoader();
+      if (xhr.status === 200) {
+        // Email sent successfully
+        console.log("Email sent successfully");
+        showSuccessPopup();
+        resetForm(); // Reset the form
+      } else {
+        // Email sending failed
+        showErrorPopup();
+        resetForm(); // Reset the form
+        console.error("Failed to send email. Check the console for details.");
+      }
+    };
+    xhr.send(formData);
+  });
 });

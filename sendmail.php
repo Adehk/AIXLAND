@@ -10,7 +10,7 @@
         $name = $_POST['name'];
         $email = $_POST['email'];
         $phone =  $_POST['phone'];
-        $subject = 'Поддержка стартапов';
+        $subject = 'AIXLAND';
         $body = '';
 
         if (trim(!empty($name))) {
@@ -31,14 +31,14 @@
         $mail->isSMTP();  // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;  // Enable SMTP authentication
-        $mail->Username = 'portfolio.cgi.online@gmail.com'; // УКАЗАТЬ ПОЧТУ GMAIL
-        $mail->Password = 'efouovdchgzesuha';  // УКАЗАТЬ ПАРОЛЬ
+        $mail->Username = 'example@gmail.com'; // УКАЗАТЬ ПОЧТУ GMAIL
+        $mail->Password = 'example';  // УКАЗАТЬ ПАРОЛЬ
         $mail->SMTPSecure = 'tls';  // Enable TLS encryption, 'ssl' also accepted
         $mail->Port = 587;  // TCP port to connect to
     
         //Recipients
         // $mail->setFrom('from@gmail.com', 'from');
-        $mail->addAddress('khedagermikhanova@mail.ru'); 
+        $mail->addAddress('aliev@expovision.io'); 
     
         //Content
         $mail->isHTML(true);

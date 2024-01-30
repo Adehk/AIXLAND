@@ -7,7 +7,7 @@
 
 body
   background-color: #141414 !important
-  color: #fff
+  color: #fff !important
   font-family: "Golos Text", sans-serif !important
   line-height: normal !important
   overflow-x: hidden
@@ -16,7 +16,10 @@ body
     background-repeat: no-repeat
     background-position: center center
     background-attachment: fixed
-    background-size: 80%
+
+.disable-scroll
+  height: 100vh
+  overflow: hidden
 
 ul, li
   list-style-type: none !important
@@ -69,14 +72,17 @@ a
       color: #E03C31
 
 .hero
-  width: 100%
   height: 100vh
-  padding-bottom: 33.33%
+  // padding-bottom: 33.33%
   margin: -50px 5px 0
   background: #000
   background-size: cover
   -webkit-clip-path: url(#mobile-hero-bg)
   clip-path: url(#mobile-hero-bg)
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
   @media (min-width: 768px)
     margin: -75px 10px 0
     -webkit-clip-path: url(#tablet-hero-bg)
@@ -85,6 +91,26 @@ a
     margin: -65px 16px 0
     -webkit-clip-path: url(#desktop-hero-bg)
     clip-path: url(#desktop-hero-bg)
+  &__video
+    width: 100%
+    height: 100%
+    object-fit: cover
+  &__logo
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 240px
+    height: 98px
+    @media (min-width: 768px)
+      width: 350px
+      height: 142px
+    @media (min-width: 1440px)
+      width: 525px
+      height: 215px
+    svg
+      width: 100%
+      height: 100%
 
 .infinite-marquee
   background-color: #141414
@@ -211,6 +237,7 @@ a
     @media (min-width: 768px)
       font-size: 48px
     @media (min-width: 1440px)
+      position: -webkit-sticky
       position: sticky
       top: 0
       background-color: #050505
@@ -571,6 +598,198 @@ a
   @media (min-width: 1440px)
     display: none
 
+.loader-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgb(0, 0, 0, 0.8)
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 999
+  opacity: 0
+  visibility: hidden
+  transform: scale(1.1)
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s
+  overflow: hidden
+
+.show-loader-overlay
+  opacity: 1
+  visibility: visible
+  transform: scale(1.0)
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s
+
+.loader
+  width: 48px
+  height: 48px
+  border: 2px solid #FFF
+  border-radius: 50%
+  display: inline-block
+  position: relative
+  box-sizing: border-box
+  animation: rotation 1s linear infinite
+  &::after
+    content: ''
+    box-sizing: border-box
+    position: absolute
+    left: 50%
+    top: 0
+    background: #E03C31
+    width: 3px
+    height: 24px
+    transform: translateX(-50%)
+
+@keyframes rotation
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
+
+.success-popup
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  z-index: 999
+  background: rgba(0, 0, 0, 0.8)
+  opacity: 0
+  visibility: hidden
+  transform: scale(1.1)
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s
+  overflow: hidden
+  &__content
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background-color: #25282A
+    color: #fff
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 24px
+    text-align: center
+    width: 90%
+    margin: 0 auto
+    padding: 65px 24px
+    background-size: cover
+    -webkit-clip-path: url(#popup-bg)
+    clip-path: url(#popup-bg)
+    @media (min-width: 768px)
+      gap: 40px
+      width: 100%
+      max-width: 650px
+      padding: 75px 50px
+  &__title
+    color: #E03C31
+    font-size: 40px
+    text-transform: uppercase
+    margin-bottom: 0
+    @media (min-width: 768px)
+      font-size: 64px
+  &__paragraph
+    font-size: 18px
+    line-height: 27px
+    margin-top: 8px
+    margin-bottom: 0
+    @media (min-width: 768px)
+      font-size: 22px
+  &__close-button
+    display: inline-block
+    color: #E03C31
+    font-size: 18px
+    width: 150px
+    padding: 16px 32px
+    border-radius: 12px
+    border: 1px solid #E03C31
+    cursor: pointer
+    transition: all 0.3s ease-out
+    &:hover
+      border: 1px solid #C53026
+      background: rgba(224, 60, 49, 0.10)
+
+.show-success-popup
+  opacity: 1
+  visibility: visible
+  transform: scale(1.0)
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s
+
+.error-popup
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  z-index: 999
+  background: rgba(0, 0, 0, 0.8)
+  opacity: 0
+  visibility: hidden
+  transform: scale(1.1)
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s
+  overflow: hidden
+  &__content
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background-color: #25282A
+    color: #fff
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 24px
+    text-align: center
+    width: 90%
+    margin: 0 auto
+    padding: 65px 24px
+    background-size: cover
+    -webkit-clip-path: url(#popup-bg)
+    clip-path: url(#popup-bg)
+    @media (min-width: 768px)
+      gap: 40px
+      width: 100%
+      max-width: 650px
+      padding: 75px 50px
+  &__title
+    color: #E03C31
+    font-size: 40px
+    text-transform: uppercase
+    margin-bottom: 0
+    @media (min-width: 768px)
+      font-size: 64px
+  &__paragraph
+    font-size: 18px
+    line-height: 27px
+    margin-top: 8px
+    margin-bottom: 0
+    @media (min-width: 768px)
+      font-size: 22px
+  &__close-button
+    display: inline-block
+    color: #E03C31
+    font-size: 18px
+    width: 150px
+    padding: 16px 32px
+    border-radius: 12px
+    border: 1px solid #E03C31
+    cursor: pointer
+    transition: all 0.3s ease-out
+    &:hover
+      border: 1px solid #C53026
+      background: rgba(224, 60, 49, 0.10)
+
+.show-error-popup
+  opacity: 1
+  visibility: visible
+  transform: scale(1.0)
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s
+
 .ask
   background-color: #050505
   margin: 70px 24px 0
@@ -698,32 +917,13 @@ a
       background-color: #C53026
 
 .iti
-  display: block !important
+  display: block
 
-.intl-tel-input
-  padding-left: 80px !important
+.iti__country-list
+  background-color: #000
 
 .iti__selected-flag
-  padding: 0 10px 0 20px
-
-// .iti__selected-dial-code
-//   order: 1
-
-// .iti__flag
-//   border-radius: 2px
-  // width: 24px
-  // height: 24px
-  // background-size: cover
-
-.iti__arrow
-  // border-left: 4px solid transparent
-  // border-right: 4px solid transparent
-  // border-top: 4px solid #D9D9D9
-
-// .iti__country
-//   background-color: #050505
-//   &:hover
-//     background-color: #050505
+  padding: 0 6px 0 20px
 
 .checkbox
   display: flex
@@ -975,7 +1175,11 @@ a
     @media (min-width: 768px)
       font-size: 18px
       margin-bottom: 16px
-
+  &__nav-text
+    color: #828282
+    font-size: 14px
+    @media (min-width: 768px)
+      font-size: 18px
 .footer__social-link svg
   fill: #fff
   transition: all 0.3s ease-out
