@@ -101,26 +101,25 @@ a {
 }
 
 .hero {
-  height: 100vh;
-  margin: -50px 5px 0;
+  height: 550px;
+  margin: -45px 5px 0;
   background: #000;
   background-size: cover;
   -webkit-clip-path: url(#mobile-hero-bg);
   clip-path: url(#mobile-hero-bg);
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 @media (min-width: 768px) {
   .hero {
-    margin: -75px 10px 0;
+    height: 750px;
+    margin: -95px 10px 0;
     -webkit-clip-path: url(#tablet-hero-bg);
     clip-path: url(#tablet-hero-bg);
   }
 }
 @media (min-width: 1440px) {
   .hero {
+    height: 100vh;
     margin: -65px 16px 0;
     -webkit-clip-path: url(#desktop-hero-bg);
     clip-path: url(#desktop-hero-bg);
