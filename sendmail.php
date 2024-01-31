@@ -27,18 +27,18 @@
         $mail->CharSet = 'UTF-8';
         $mail->setLanguage('ru', 'PHPMailer_6.9.1/language/');
 
-        //SMTP settings
-        $mail->isSMTP();  // Set mailer to use SMTP
-        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true;  // Enable SMTP authentication
-        $mail->Username = 'example@gmail.com'; // УКАЗАТЬ ПОЧТУ GMAIL
-        $mail->Password = 'example';  // УКАЗАТЬ ПАРОЛЬ
-        $mail->SMTPSecure = 'tls';  // Enable TLS encryption, 'ssl' also accepted
-        $mail->Port = 587;  // TCP port to connect to
+        // //SMTP settings
+        // $mail->isSMTP();  // Set mailer to use SMTP
+        // $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+        // $mail->SMTPAuth = true;  // Enable SMTP authentication
+        // $mail->Username = 'example@gmail.com'; // УКАЗАТЬ ПОЧТУ GMAIL
+        // $mail->Password = 'example';  // УКАЗАТЬ ПАРОЛЬ
+        // $mail->SMTPSecure = 'tls';  // Enable TLS encryption, 'ssl' also accepted
+        // $mail->Port = 587;  // TCP port to connect to
     
         //Recipients
-        // $mail->setFrom('from@gmail.com', 'from');
-        $mail->addAddress('example@gmail.com'); 
+        $mail->setFrom('info@expovision.io', 'aixland');
+        $mail->addAddress('aliev@expovision.io'); 
     
         //Content
         $mail->isHTML(true);

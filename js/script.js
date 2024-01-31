@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
     separateDialCode: true,
     initialCountry: "auto",
     geoIpLookup: function (success, failure) {
-      success("RU");
+      success("DE");
     },
   });
 
