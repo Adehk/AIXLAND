@@ -38,7 +38,7 @@
     
         //Recipients
         // $mail->setFrom('from@gmail.com', 'from');
-        $mail->addAddress('aliev@expovision.io'); 
+        $mail->addAddress('example@gmail.com'); 
     
         //Content
         $mail->isHTML(true);
