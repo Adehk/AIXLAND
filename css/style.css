@@ -690,7 +690,7 @@ a {
 }
 @media (min-width: 1440px) {
   .benefits-for-users__img {
-    width: 45%;
+    width: 576px;
     height: 564px;
   }
 }
@@ -1573,7 +1573,7 @@ a {
 }
 @media (min-width: 768px) {
   .footer__links {
-    gap: 32px;
+    gap: 80px;
   }
 }
 @media (min-width: 1440px) {
@@ -1603,7 +1603,6 @@ a {
 @media (min-width: 768px) {
   .footer__contact-col {
     gap: 0;
-    width: 200px;
   }
 }
 .footer__office-col {
