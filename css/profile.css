@@ -1,0 +1,455 @@
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Golos Text", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  background-color: #141414;
+  color: #fff;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  height: 92px;
+  padding: 24px;
+  background-color: #141414;
+  border-bottom: 1px solid #292929;
+}
+@media (min-width: 768px) {
+  .header {
+    padding: 24px 48px;
+  }
+}
+@media (min-width: 1440px) {
+  .header {
+    padding: 24px 40px;
+  }
+}
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 1440px) {
+  .header__content {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+.header__logo {
+  width: 155px;
+  height: 30px;
+}
+.header__logo img {
+  width: 100%;
+  height: 100%;
+}
+.header__cta-col {
+  display: flex;
+  gap: 28px;
+}
+.header__logged-in {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .header__logged-in {
+    gap: 28px;
+  }
+}
+.header__notification {
+  position: relative;
+}
+.header__notification::after {
+  position: absolute;
+  content: "";
+  background: url(../images/notification-dot.svg) no-repeat;
+  width: 100%;
+  height: 100%;
+  top: -1px;
+  left: 12px;
+  pointer-events: none;
+}
+.header__user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header__user-pp {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.header__user-pp img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.header__user-details {
+  display: none;
+}
+@media (min-width: 768px) {
+  .header__user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+}
+.header__user-name {
+  font-weight: 500;
+}
+.header__user-driving-license-ID {
+  color: #b6b6b6;
+  font-size: 13px;
+}
+.header__language-picker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #70777a;
+  font-family: "Golos Text", sans-serif;
+  font-size: 16px;
+  width: 50px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  background-image: url("../images/down-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: 100% 55%;
+  outline: none;
+}
+
+@media (min-width: 1440px) {
+  .profile-and-sidebar {
+    display: grid;
+    grid-template-columns: 272px 1fr;
+    grid-template-rows: 1fr;
+    gap: 225px;
+    max-width: 1515px;
+    margin: 92px auto 0;
+  }
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin: 150px 24px;
+}
+@media (min-width: 768px) {
+  .profile {
+    max-width: 728px;
+    margin: 190px auto;
+    padding: 0 48px;
+  }
+}
+@media (min-width: 1440px) {
+  .profile {
+    margin: 100px 0;
+    padding: 0;
+    order: 1;
+  }
+}
+.profile__user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.profile__user-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.profile__user-pp {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+.profile__user-pp img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.profile__user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.profile__user-name {
+  font-size: 24px;
+  font-weight: 600;
+}
+.profile__user-driving-license-ID {
+  color: #b6b6b6;
+  font-size: 13px;
+}
+.profile__edit-avatar-btn {
+  background-color: transparent;
+  color: #e03c31;
+  font-family: "Golos Text", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 1px solid #e03c31;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.profile__edit-avatar-btn:hover {
+  border: 1px solid #c53026;
+  background-color: rgba(224, 60, 49, 0.1019607843);
+}
+
+.inputboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputbox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #9a9a9a;
+}
+.inputbox label:has(+ input:focus) {
+  color: #fff;
+}
+.inputbox input {
+  color: #fff;
+  font-size: 18px;
+  padding: 16px 24px;
+  background-color: transparent;
+  border: 1px solid #ced3d6;
+  border-radius: 12px;
+  caret-color: #e03c31;
+}
+.inputbox input:focus {
+  outline: none;
+  border: 1px solid #e03c31;
+}
+.inputbox input:-webkit-autofill {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #fff !important;
+}
+.inputbox input::-moz-placeholder {
+  font-size: 18px;
+}
+.inputbox input::placeholder {
+  font-size: 18px;
+}
+
+.notifications {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.notifications__text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.notifications__title {
+  color: #333333;
+  font-size: 20px;
+}
+.notifications__paragraph {
+  color: #828282;
+  line-height: 24px;
+}
+
+.toggle-switch-container {
+  width: 40px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  cursor: pointer;
+}
+.toggle-switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #828282;
+  border-radius: 70px;
+  transition: 0.4s;
+}
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: #e03c31;
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+.save-changes-btn {
+  background-color: transparent;
+  color: #e03c31;
+  font-family: "Golos Text", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 16px 32px;
+  border-radius: 12px;
+  border: 1px solid #e03c31;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  margin-top: 32px;
+  align-self: stretch;
+  width: 100%;
+}
+.save-changes-btn:hover {
+  border: 1px solid #c53026;
+  background-color: rgba(224, 60, 49, 0.1019607843);
+}
+
+.sidebar {
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 55px;
+  padding: 0 24px;
+  background-color: #141414;
+  border-top: 1px solid #292929;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    height: 65px;
+    padding: 0 48px;
+  }
+}
+@media (min-width: 1440px) {
+  .sidebar {
+    position: sticky;
+    top: 92px;
+    width: 272px;
+    height: calc(100vh - 92px);
+    padding: 80px 0 0;
+    border-top: none;
+    border-right: 1px solid #292929;
+  }
+}
+.sidebar__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+@media (min-width: 1440px) {
+  .sidebar__content {
+    flex-direction: column;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+@media (min-width: 1440px) {
+  .sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 272px;
+    padding: 16px 40px;
+  }
+  .sidebar__link:last-child {
+    margin-top: 45px;
+  }
+}
+.sidebar svg {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease-out;
+}
+@media (min-width: 768px) {
+  .sidebar svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+@media (min-width: 1440px) {
+  .sidebar svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+.sidebar__fill-svg {
+  fill: #fff;
+}
+.sidebar__stroke-svg {
+  stroke: #fff;
+}
+.sidebar__fill-stroke-svg {
+  fill: #fff;
+  stroke: #fff;
+}
+.sidebar__link-text {
+  display: none;
+}
+@media (min-width: 1440px) {
+  .sidebar__link-text {
+    display: block;
+    font-size: 18px;
+    transition: all 0.3s ease-out;
+  }
+}
+
+.sidebar__link:hover .sidebar__fill-svg,
+.sidebar__link:hover .sidebar__link-text {
+  color: #e03c31;
+  fill: #e03c31;
+}
+
+.sidebar__link:hover .sidebar__stroke-svg {
+  stroke: #e03c31;
+}
+
+.sidebar__link-active .sidebar__fill-svg,
+.sidebar__link-active .sidebar__link-text {
+  color: #e03c31;
+  fill: #e03c31;
+}
+
+.sidebar__link-active .sidebar__stroke-svg {
+  stroke: #e03c31;
+}/*# sourceMappingURL=profile.css.map */

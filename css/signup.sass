@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap')
+
+*
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+  font-family: "Golos Text", sans-serif
+
+a
+  color: inherit
+  text-decoration: none
+
+ul
+  list-style-type: none
+
+body
+  background-color: #141414
+  color: #fff
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+.header
+  position: fixed
+  top: 0
+  right: 0
+  left: 0
+  z-index: 999
+  height: 92px
+  padding: 24px
+  background-color: #141414
+  border-bottom: 1px solid #292929
+  @media (min-width: 1440px)
+    padding: 24px 72px
+  &__content
+    display: flex
+    align-items: center
+    justify-content: space-between
+    @media (min-width: 1440px)
+      max-width: 1440px
+      margin: 0 auto
+  &__logo
+    width: 155px
+    height: 30px
+    img
+      width: 100%
+      height: 100%
+  &__cta-col
+    display: flex
+    gap: 28px
+  &__login-btn
+    background-color: transparent
+    color: #e03c31
+    padding: 12px 24px
+    border-radius: 12px
+    border: 1px solid #e03c31
+    transition: all 0.3s ease-out
+    &:hover
+      border: 1px solid #c53026
+      background-color: #e03c311a
+  &__language-picker
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    color: #70777a
+    font-family: "Golos Text", sans-serif
+    font-size: 16px
+    width: 50px
+    background: transparent
+    border: none
+    cursor: pointer
+    background-image: url('../images/down-arrow.svg')
+    background-repeat: no-repeat
+    background-position: 100% 55%
+    outline: none
+
+.signup
+  margin: 150px 24px 100px
+  flex-grow: 1
+  @media (min-width: 768px)
+    margin: 190px 0 100px
+  &__content
+    @media (min-width: 768px)
+      max-width: 420px
+      margin: 0 auto
+  &__title
+    font-size: 36px
+    font-weight: 600
+    margin-bottom: 12px
+  &__subtitle
+    color: #969fa3
+    font-size: 18px
+    line-height: 28px
+    margin-bottom: 32px
+  &__login-link
+    text-align: center
+    color: #969fa3
+    line-height: 24px
+    margin-top: 16px
+    a
+      color: #fff
+      transition: all 0.3s ease-out
+      &:hover
+        color: #e03c31
+
+.inputboxes
+  display: flex
+  flex-direction: column
+  gap: 24px
+
+.inputbox
+  display: flex
+  flex-direction: column
+  gap: 12px
+  color: #9a9a9a
+  label:has(+ input:focus)
+    color: #fff
+  input
+    color: #fff
+    font-size: 18px
+    padding: 16px 24px
+    background-color: transparent
+    border: 1px solid #ced3d6
+    border-radius: 12px
+    caret-color: #e03c31
+    &:focus
+      outline: none
+      border: 1px solid #e03c31
+    &:-webkit-autofill
+      -webkit-background-clip: text
+      -webkit-text-fill-color: #fff !important
+    &::placeholder
+      font-size: 18px
+
+.checkbox
+  position: relative
+  margin-top: 16px
+  input
+    position: absolute
+    opacity: 0
+    & + label
+      display: inline-block
+      position: relative
+      padding-left: 35px
+      padding-top: 1px
+      color: #969fa3
+      line-height: 24px
+      a
+        color: #fff
+        transition: all 0.3s ease-out
+        &:hover
+          color: #c53026
+      &:before
+        position: absolute
+        display: block
+        left: 0
+        top: 0
+        content: ""
+        background: transparent
+        width: 24px
+        height: 24px
+        box-shadow: inset 0 0 0 1px #ced3d6
+        border-radius: 4px
+        transition: 200ms ease-in-out all
+      &:after
+        position: absolute
+        display: block
+        top: 8.8px
+        left: 7.3px
+        content: ""
+        background-image: url('../images/checkmark.svg')
+        background-repeat: no-repeat
+        width: 24px
+        height: 24px
+        transition: opacity 200ms ease-in-out
+        opacity: 0
+    &:hover + label:before
+      cursor: pointer
+    &:hover + label:after
+      cursor: pointer
+    &:focus
+      outline: none
+    &:checked + label
+      &:before
+        background: #e03c31
+        box-shadow: none
+      &:after
+        opacity: 1
+
+.signup-btn
+  color: #fff
+  font-family: "Golos Text", sans-serif
+  font-size: 18px
+  padding: 16px 32px
+  margin-top: 32px
+  width: 100%
+  background-color: #e03c31
+  border: none
+  border-radius: 12px
+  cursor: pointer
+  transition: all 0.3s ease-out
+  &:hover
+    background-color: #c53026
+
+.footer
+  background-color: #141414
+  border-top: 1px solid #3d3d3d
+  &__content
+    display: flex
+    flex-direction: column
+    gap: 32px
+    color: #828282
+    font-size: 18px
+    padding: 50px 24px
+    @media (min-width: 768px)
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+      gap: 0
+      height: 135px
+      padding: 0 24px
+    @media (min-width: 1440px)
+      max-width: 1440px
+      margin: 0 auto
+      padding: 0 72px
+  &__copyright
+    order: 2
+    @media (min-width: 768px)
+      order: 0
+  &__cta-col
+    display: flex
+    flex-direction: column
+    gap: 16px
+    @media (min-width: 768px)
+      flex-direction: row
+      align-items: center
+      gap: 32px
+    a
+      transition: all 0.3s ease-out
+      &:hover
+        color: #e03c31
+  &__socials
+    display: flex
+    align-items: center
+    gap: 16px
+  &__social-link
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 10px
+    border-radius: 8px
+    border: 1px solid #828282
+    transition: all 0.3s ease-out
+    &:hover
+      border: 1px solid #E03C31
+
+.footer__social-link svg
+  fill: #828282
+  transition: all 0.3s ease-out
+
+.footer__social-link:hover svg
+  fill: #E03C31
