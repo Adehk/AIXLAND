@@ -384,6 +384,9 @@ body {
     height: fit-content;
   }
 }
+.sidebar__link svg {
+  color: #fff;
+}
 @media (min-width: 1440px) {
   .sidebar__link {
     display: flex;

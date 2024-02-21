@@ -106,7 +106,7 @@ body
     background-position: 100% 55%
     outline: none
 
-.orderpaid
+.cart
   margin: 150px 24px 60px
   flex-grow: 1
   @media (min-width: 768px)
@@ -114,11 +114,74 @@ body
   @media (min-width: 1440px)
     max-width: 1105px
     margin: 150px auto
+  &__content
+    display: flex
+    flex-direction: column
+    gap: 32px
+  &__cta
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 32px
+    @media (min-width: 768px)
+      flex-direction: row
+      justify-content: space-between
   &__title
     font-size: 36px
     font-weight: 600
-    margin-bottom: 48px
-    text-align: left
+    text-align: center
+  &__empty-cart-btn
+    background-color: transparent
+    color: #e03c31
+    font-size: 16px
+    line-height: 24px
+    padding: 12px 24px
+    border-radius: 66px
+    border: 1px solid #e03c31
+    cursor: pointer
+    transition: all 0.3s ease-out
+    &:hover
+      border: 1px solid #c53026
+      background-color: #e03c311a
+  &__btn-container
+    display: grid
+    gap: 20px
+    @media (min-width: 768px)
+      grid-template-columns: 141px 202px
+      align-self: end
+  &__grand-total
+    color: #fff
+    font-size: 18px
+    text-transform: uppercase
+    letter-spacing: 1.5px
+  &__pay-btn
+    background-color: #e03c31
+    color: #e0e4e7
+    font-family: "Golos Text", sans-serif
+    font-size: 16px
+    font-weight: 500
+    line-height: 19px
+    border-radius: 66px
+    border: none
+    padding: 16px 24px
+    cursor: pointer
+    transition: all 0.3s ease-out
+    &:hover
+      background-color: rgb(197, 48, 38)
+  &__pay-by-credit-card-btn
+    background-color: #191919
+    color: #e0e4e7
+    font-family: "Golos Text", sans-serif
+    font-size: 16px
+    font-weight: 500
+    line-height: 19px
+    border-radius: 66px
+    border: none
+    padding: 16px 24px
+    cursor: pointer
+    transition: all 0.3s ease-out
+    &:hover
+      background-color: lighten(#191919, 2%)
 
 .thead
   display: none
@@ -138,8 +201,7 @@ body
   margin-bottom: 6px
   @media screen and (min-width: 1440px)
     display: grid
-    grid-template-columns: repeat(4, 1fr)
-    align-items: center
+    grid-template-columns: 3.5fr 1fr 1fr 1fr
     margin-bottom: 1px
 
 .td
@@ -163,14 +225,57 @@ body
     &:before
       display: none
 
-.completed
-  background-color: #2fdd7f1a
-  color: #2fdd7f
-  font-size: 16px
-  padding: 8px 20px
-  border-radius: 20px
-  align-self: start
+.product
+  display: flex
+  flex-direction: column
+  gap: 10px
   @media (min-width: 768px)
+    display: grid
+    grid-template-columns: 150px 1fr
+    gap: 16px
+  @media (min-width: 1440px)
+  &__img
+    width: 100%
+    height: auto
+    object-fit: cover
+    border-radius: 8px
+    background-color: #d9d9d9
+  &__name
+    font-size: 18px
+    margin-bottom: 8px
+    @media (min-width: 768px)
+      margin-bottom: 4px
+  &__desc
+    color: #72767c
+    font-size: 16px
+    line-height: 18px
+    margin-bottom: 24px
+    @media (min-width: 768px)
+      margin-bottom: 12px
+  &__remove-btn
+    background-color: transparent
+    color: #e03c31
+    padding: 8px 20px
+    border-radius: 20px
+    border: 1px solid #e03c31
+    cursor: pointer
+    transition: all 0.3s ease-out
+    &:hover
+      border: 1px solid #c53026
+      background-color: #e03c311a
+
+.quantity
+  display: flex
+  align-items: center
+  gap: 32px
+
+.increment,
+.decrement
+  background-color: transparent
+  color: #fff
+  font-size: 26px
+  border: none
+  cursor: pointer
 
 .footer
   background-color: #141414
