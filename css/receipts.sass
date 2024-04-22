@@ -124,20 +124,7 @@ body
     margin-bottom: 32px
     @media (min-width: 768px)
       grid-template-columns: 141px 202px
-  &__bank-orders-btn
-    background-color: #e03c31
-    color: #e0e4e7
-    font-family: "Golos Text", sans-serif
-    font-size: 16px
-    font-weight: 500
-    line-height: 19px
-    border-radius: 66px
-    border: none
-    padding: 16px 24px
-    cursor: pointer
-    transition: all 0.3s ease-out
-    &:hover
-      background-color: rgb(197, 48, 38)
+  &__bank-orders-btn,
   &__crypto-transaktions-btn
     background-color: #191919
     color: #e0e4e7
@@ -152,6 +139,12 @@ body
     transition: all 0.3s ease-out
     &:hover
       background-color: lighten(#191919, 2%)
+
+  .active-btn
+    background-color: #e03c31
+    color: #e0e4e7
+    &:hover
+      background-color: rgb(197, 48, 38)
 
 .thead
   display: none
